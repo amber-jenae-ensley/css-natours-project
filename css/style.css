@@ -36,30 +36,81 @@ body {
 }
 
 .logo-box {
-    position: absolute; /* make absolute so that it stays in the corner*/
-    top: 40px;
-    left: 40px;
+  position: absolute; /* make absolute so that it stays in the corner*/
+  top: 40px;
+  left: 40px;
 }
 
 .logo {
-    height: 35px;
+  height: 35px;
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* this 50% is not in relation to the parent element anymore, but to the current element itself. so it will move 50% of ITS CURRENT width to the left and to the top*/
 }
 
 .heading-primary {
-    color: #fff;
-    text-transform: uppercase;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 .heading-primary-main {
-    display: block;
-    font-size: 60px;
-    font-weight: 400;
-    letter-spacing: 35px;
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: moveInLeft; /*just add in animation name and duration on the element you want to animate*/
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  /* animation-delay: 3s; */
 }
 
 .heading-primary-sub {
-    display: block;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 15px;
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 15px;
+  /* animation shorthand: animation-name, duration, animation-timing-function */
+  animation: moveInRight 1s ease-out;
+}
+
+/* best to animate only opacity and transform - that's what the browser is optimized for */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
